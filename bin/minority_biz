@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require './lib/minority_biz'
+
+
+MinorityBiz::CLI.new.call
