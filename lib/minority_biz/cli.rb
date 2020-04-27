@@ -2,12 +2,13 @@
 class MinorityBiz::CLI
     def call
         puts "Hello and welcome to the SA Black Minority Business Directory!" 
-        list_options
+        initial_options
         options
+        end_message
     end
 
 
-    def list_options
+    def initial_options
         
       puts  <<-DOC.gsub /^\s+/, ""
             Would you like a listing of current black owned businesses in San Antonio?
@@ -19,19 +20,33 @@ class MinorityBiz::CLI
 
     def options
         puts"Please choose an option"
-        input = gets.strip
-        case input
-            when "1"
-              puts "Making sure 1 works"
-            when "2"
-              puts "Making sure 2 works"
-            #   break
-            else 
-               puts "Invalid entry, please try again"
-               sleep(2)
-               list_options
-               options
-            end
+        input = ""
+        while input != "2"
+            input = gets.strip.downcase
+            case input
+                when "1"
+                    listings
+                when "2"
+                    end_message
+                #   break
+                when 'back'
+                    initial_options
+                else 
+                puts "Invalid entry, please try again"
+                sleep(2)
+                initial_options
+                options
+                end
+          end
             
     end
+
+    def listings
+        puts "listings will appear here once I write of file for it"
+    end
+
+    def end_message
+        puts 'Have yourself a good day!'
+    end
+    #fdfasdfsd
 end
