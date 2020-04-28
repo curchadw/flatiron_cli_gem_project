@@ -4,29 +4,57 @@ require 'pry'
 
 
 class Scraper
-    def self.scrape_main_page
+    
+    def self.scrape_listings
+        local_biz - Array.new
+        local_biz << self.scrape_main_page
+        local_biz
+
+    end 
+    
+    
+    def self.scrape_first_page
         
         html = open("https://www.texasblackpages.com/united-states/san-antonio")
         doc = Nokogiri::HTML(html)
-        listings = doc.css('div.mid_section')
-        invid_biz = doc.css('a .h3 b')
-       list =  invid_biz.each do |biz|
-            puts '#{biz}'
-        end
-        
+        biz_name = doc.css('h2.h3 b').text
+        type_biz = doc.css('h2.h3 span').text
+        biz_number = doc.css('span.sm-block.lmargin.sm-nomargin').text
+    end
 
+    def self.scrape_second_page
+        html = open('https://www.texasblackpages.com/united-states/san-antonio?page=2')
+        doc = Nokogiri::HTML(html)
+        biz_name = doc.css('h2.h3 b').text
+        type_biz = doc.css('h2.h3 span').text
+        biz_number = doc.css('span.sm-block.lmargin.sm-nomargin').text
         binding.pry
     end
 
 
+    def self.scrape_third_page
+        html = open('https://www.texasblackpages.com/united-states/san-antonio?page=3&')
+        doc = Nokogiri::HTML(html)
+        biz_name = doc.css('h2.h3 b').text
+        type_biz = doc.css('h2.h3 span').text
+        biz_number = doc.css('span.sm-block.lmargin.sm-nomargin').text
+    end
 
+
+    def self.scrape_forth_page
+        
+        html = open('https://www.texasblackpages.com/united-states/san-antonio?page=4&')
+        doc = Nokogiri::HTML(html)
+        biz_name = doc.css('h2.h3 b').text
+        
+        type_biz = doc.css('h2.h3 span').text
+        biz_number = doc.css('span.sm-block.lmargin.sm-nomargin').text
+    end
 
 
 end
 
-Scraper.scrape_main_page
+Scraper.scrape_second_page
 
 
 
-#doc.css('div.mid_section').text
-#doc.css(a .h3 b)
