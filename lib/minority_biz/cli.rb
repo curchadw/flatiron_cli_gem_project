@@ -48,5 +48,5 @@ class MinorityBiz::CLI
     def end_message
         puts 'Have yourself a good day!'
     end
-    #fdfasdfsd
+    
 end
