@@ -5,12 +5,7 @@ require 'pry'
 
 class Scraper
     
-    def self.scrape_listings
-        local_biz - Array.new
-        local_biz << self.scrape_main_page
-        local_biz
-
-    end 
+   
     
     
     def self.scrape_first_page
@@ -52,7 +47,7 @@ class Scraper
             biz_number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
             third_page.push({:business_name=> biz_name, :business_type => type_biz, :business_number => biz_number}) 
         end  
- 
+        binding.pry
        third_page
     end
 
@@ -74,7 +69,7 @@ class Scraper
 
 end
 
-Scraper.scrape_second_page
+Scraper.scrape_third_page
 
 
 

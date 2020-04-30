@@ -1,0 +1,3 @@
+class SecondPage
+    
+end

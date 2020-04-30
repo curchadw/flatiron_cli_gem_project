@@ -13,22 +13,30 @@ class MinorityBiz::CLI
       puts  <<-DOC.gsub /^\s+/, ""
             Would you like a listing of current black owned businesses in San Antonio?
 
-            1. Yes
-            2. Exit  
+            1. First Page
+            2. Second Page
+            3. Third Page
+            4. Forth Page
+            5. Exit  
         DOC
     end
 
     def options
         puts"Please choose an option"
         input = ""
-        while input != "2"
+        while input != "5"
             input = gets.strip.downcase
             case input
                 when "1"
-                    listings
+                    get_page
                 when "2"
+                    listings
+                when "3"
+                    listings
+                when "4"
+                    listings
+                when "5"
                     end_message
-                #   break
                 when 'back'
                     initial_options
                 else 
@@ -47,6 +55,10 @@ class MinorityBiz::CLI
 
     def end_message
         puts 'Have yourself a good day!'
+    end
+
+    def get_page
+        @first_page = FirstPage.all
     end
     
 end
