@@ -1,5 +1,5 @@
 
-
+require 'pry'
 class Business
     
 
@@ -8,19 +8,22 @@ class Business
     attr_accessor :name, :type, :number
     @@all = Array.new
 
-    def initialize(attirbutes)
-        attirbutes.each {|key,value| self.send(("#{key}="),value)}
+    def initialize(attributes=nil)
+       if attributes
+        attributes.each {|key,value| self.send(("#{key}="),value)}
         @@all << self
+       end
+        
     end
 
-
-
-
+    
     def self.all
         @@all
         
     end
 end
+
+
 
 
 

@@ -1,5 +1,5 @@
 #CLI contorller like in a MVC
-require "./minority_biz/lib/scraper.rb"
+require "../lib/scraper.rb"
 
 class MinorityBiz::CLI
     def call
