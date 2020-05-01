@@ -1,20 +1,19 @@
-require 'pry'
+
 
 class Business
     
 
-    @@all = []
+    
 
     attr_accessor :name, :type, :number
-    attr_reader :new_biz
+    @@all = Array.new
 
-    def initialize(name,type,number)
-        @name = name
-        @type = type
-        @number = number
-        @new_biz = {:biz_name => name, :biz_type => type, :biz_number => number}
-        @@all.push(@new_biz)
+    def initialize(attirbutes)
+        attirbutes.each {|key,value| self.send(("#{key}="),value)}
+        @@all << self
     end
+
+
 
 
     def self.all

@@ -28,7 +28,7 @@ class MinorityBiz::CLI
             input = gets.strip.downcase
             case input
                 when "1"
-                    listings
+                    show_listings
                     
                 when "2"
                     end_message
@@ -44,8 +44,12 @@ class MinorityBiz::CLI
             
     end
 
-    def listings
-        puts 'Blah'
+    def show_listings
+        Business.all.each do |biz|
+            puts "Name: #{biz.name}"
+            puts "Type of Business: #{biz.type}"
+            puts "Phone Number: #{biz.number}"
+        end
     end
 
     def end_message
