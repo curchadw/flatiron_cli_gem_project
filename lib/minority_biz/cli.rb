@@ -1,6 +1,7 @@
 #CLI contorller like in a MVC
 require "./lib/minority_biz/scraper.rb"
 
+
 class MinorityBiz::CLI
     def call
         puts "Hello and welcome to the SA Black Minority Business Directory!" 
@@ -42,20 +43,22 @@ class MinorityBiz::CLI
                 initial_options
                 options
                 end
-          end
-            
+        end
+          
     end
 
     def make_listings
-        business_arrays = Scraper.business_listings
-        Business.create_from_collection(business_arrays)
+        business_array = Scraper.business_listings
+        Business.create_from_collection(business_array)
     end
 
     def show_listings
-        Business.all.each do |biz|
+        Business.all.each_with_index do |i,biz|
+            puts"#{i}:"
             puts "Name: #{biz.name}"
             puts "Type of Business: #{biz.type}"
             puts "Phone Number: #{biz.number}"
+            
         end
     end
 
@@ -66,3 +69,5 @@ class MinorityBiz::CLI
     
     
 end
+
+
