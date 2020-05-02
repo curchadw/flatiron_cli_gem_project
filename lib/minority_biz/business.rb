@@ -16,6 +16,19 @@ class Business
         
     end
 
+    def self.create_from_collection(business_array)
+        business_array.each do |business_hash|
+          Business.new(business_hash)
+        end
+    end
+
+    def add_business_attributes(attributes_hash)
+        attributes_hash.each do |key, value|
+          self.send("#{key}=", value)
+        end
+        self
+    end
+
     
     def self.all
         @@all

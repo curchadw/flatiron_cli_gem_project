@@ -6,7 +6,7 @@ require_relative '../minority_biz/business.rb'
 
 class Scraper
     
-    attr_accessor :array, :biz_name, :biz_number, :type_biz
+    
     
     
     def self.scrape_first_page
@@ -58,8 +58,6 @@ class Scraper
             new_biz.name = business.css('a b').text
             new_biz.type = business.css('span.hidden-xs').text
             new_biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
-            
-            
         end  
     end
 
@@ -77,7 +75,7 @@ class Scraper
 end
 
 
-Scraper.scrape_third_page
+
 
 
 
