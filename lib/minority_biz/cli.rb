@@ -4,9 +4,10 @@ require "./lib/minority_biz/scraper.rb"
 class MinorityBiz::CLI
     def call
         puts "Hello and welcome to the SA Black Minority Business Directory!" 
-        make_listings
+        
         initial_options
         options
+        make_listings
         end_message
     end
 
