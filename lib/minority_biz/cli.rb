@@ -1,6 +1,6 @@
 #CLI contorller like in a MVC
-require "./lib/minority_biz/scraper.rb"
-require "./lib/minority_biz/scraper.rb"
+require_relative "../minority_biz/scraper.rb"
+require 'pry'
 
 class MinorityBiz::CLI
     def call
@@ -8,8 +8,8 @@ class MinorityBiz::CLI
         
         initial_options
         options
-        make_listings
-        end_message
+        
+        
     end
 
 
@@ -29,12 +29,13 @@ class MinorityBiz::CLI
         input = ""
         while input != "2"
             input = gets.strip.downcase
+            
             case input
                 when "1"
                     show_listings
                     
                 when "2"
-                    end_message
+                    puts 'Have yourself a good day!'
                 when 'back'
                     initial_options
                 else 
@@ -53,21 +54,17 @@ class MinorityBiz::CLI
     end
 
     def show_listings
-        Business.all.each_with_index do |i,biz|
-            puts"#{i}:"
-            puts "Name: #{biz.name}"
-            puts "Type of Business: #{biz.type}"
-            puts "Phone Number: #{biz.number}"
-            
-        end
+        make_listings
     end
 
     def end_message
-        puts 'Have yourself a good day!'
+        puts 'Have yourself a good day!'  
     end
 
     
     
 end
+
+
 
 

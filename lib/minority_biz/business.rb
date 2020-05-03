@@ -2,18 +2,15 @@
 require 'pry'
 class Business
     
-
+    @@all = Array.new
     
 
     attr_accessor :name, :type, :number
-    @@all = Array.new
+    
 
-    def initialize(attributes=nil)
-       if attributes
+    def initialize(attributes)
         attributes.each {|key,value| self.send(("#{key}="),value)}
         @@all << self
-       end
-        
     end
 
     def self.create_from_collection(business_array)

@@ -13,11 +13,12 @@ class Scraper
         
         html = open("https://www.texasblackpages.com/united-states/san-antonio")
         doc = Nokogiri::HTML(html)
-        doc.css('div.grid_element').each do |business|    
-            new_biz = Business.new
-            new_biz.name = business.css('a b').text
-            new_biz.type = business.css('span.hidden-xs').text
-            new_biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
+        doc.css('div.grid_element').each do |biz|    
+            biz = Business.new
+            biz.name = business.css('a b').text
+            biz.type = business.css('span.hidden-xs').text
+            biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
+            
         end 
     end
 
@@ -25,11 +26,11 @@ class Scraper
         
         html = open('https://www.texasblackpages.com/united-states/san-antonio?page=2')
         doc = Nokogiri::HTML(html)
-        doc.css('div.grid_element').each do |business|    
-            new_biz = Business.new
-            new_biz.name = business.css('a b').text
-            new_biz.type = business.css('span.hidden-xs').text
-            new_biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
+        doc.css('div.grid_element').each do |biz|    
+            biz = Business.new
+            biz.name = business.css('a b').text
+            biz.type = business.css('span.hidden-xs').text
+            biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
         end  
     end
 
@@ -38,11 +39,11 @@ class Scraper
         
         html = open('https://www.texasblackpages.com/united-states/san-antonio?page=3&')
         doc = Nokogiri::HTML(html)
-        doc.css('div.grid_element').each do |business|    
-            new_biz = Business.new
-            new_biz.name = business.css('a b').text
-            new_biz.type = business.css('span.hidden-xs').text
-            new_biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
+        doc.css('div.grid_element').each do |biz|    
+            biz = Business.new
+            biz.name = business.css('a b').text
+            biz.type = business.css('span.hidden-xs').text
+            biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
             
         end  
         
@@ -53,20 +54,20 @@ class Scraper
         forth_page = Array.new
         html = open('https://www.texasblackpages.com/united-states/san-antonio?page=4&')
         doc = Nokogiri::HTML(html)
-        doc.css('div.grid_element').each do |business|    
-            new_biz = Business.new
-            new_biz.name = business.css('a b').text
-            new_biz.type = business.css('span.hidden-xs').text
-            new_biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
+        doc.css('div.grid_element').each do |biz|    
+            biz = Business.new
+            biz.name = business.css('a b').text
+            biz.type = business.css('span.hidden-xs').text
+            biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
         end  
     end
 
     def self.business_listings
-        Business.all.each do |new_biz|
-            puts "Name: #{new_biz.name}"
-            puts "Type: #{new_biz.type}"
-            puts "Phone #: #{new_biz.number}"
-            
+        Business.all.each_with_index do |i,biz|
+            puts"#{i}:"
+            puts "Name: #{biz.name}"
+            puts "Type of Business: #{biz.type}"
+            puts "Phone Number: #{biz.number}"
         end
         
     end
