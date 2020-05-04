@@ -1,5 +1,6 @@
 #CLI contorller like in a MVC
 require_relative "../minority_biz/scraper.rb"
+require_relative '../minority_biz/business.rb'
 require 'pry'
 
 class MinorityBiz::CLI
@@ -32,7 +33,14 @@ class MinorityBiz::CLI
             
             case input
                 when "1"
-                    show_listings
+                    puts 'Type "back" to go back to main menu'
+                    puts '------------------------------------'
+                    
+                    if Business.all == []
+                        puts 'No data to show at the moment, type "back" to go back to main menu'
+                    else
+                        show_listings
+                    end
                     
                 when "2"
                     puts 'Have yourself a good day!'

@@ -8,9 +8,12 @@ class Business
     attr_accessor :name, :type, :number
     
 
-    def initialize(attributes)
+    def initialize(attributes = nil)
+        if attributes
         attributes.each {|key,value| self.send(("#{key}="),value)}
+        end
         @@all << self
+        
     end
 
     def self.create_from_collection(business_array)
@@ -21,7 +24,7 @@ class Business
 
     def add_business_attributes(attributes_hash)
         attributes_hash.each do |key, value|
-          self.send("#{key}=", value)
+          self.send(("#{key}="), value)
         end
         self
     end
