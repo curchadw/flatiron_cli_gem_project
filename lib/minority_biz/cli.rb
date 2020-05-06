@@ -64,9 +64,8 @@ class MinorityBiz::CLI
     end
 
     def show_listings
-        # Scraper.find_by_index
         make_listings
-        
+        Scraper.find_by_index
     end
 
     def end_message

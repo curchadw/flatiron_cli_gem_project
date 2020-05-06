@@ -77,21 +77,10 @@ class Scraper
 
     def self.find_by_index
         input = gets.to_i
-        if (1..Business.all.length).include?(input)
-            Business.each_with_index do |item,i| 
-            puts "#{item.name}"
-            puts "#{item.type}"
-            puts "#{item.number}"
-           
-            end
-        else
-            puts"Item does not exist"    
-        end
-        [input - 1]
-        
-           
-             
-         
+        biz = Business.all[input-1]
+        puts "Name: #{biz.name}"
+        puts "Type: #{biz.type}"
+        puts "Phone Number: #{biz.number}"
     end
 
 
