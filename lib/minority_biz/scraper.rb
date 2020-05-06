@@ -21,6 +21,7 @@ class Scraper
             
             
         end 
+        
     end
 
     def self.scrape_second_page
@@ -51,8 +52,8 @@ class Scraper
     end
 
 
-    def self.scrape_forth_page
-        forth_page = Array.new
+    def self.scrape_fourth_page
+        
         html = open('https://www.texasblackpages.com/united-states/san-antonio?page=4&')
         doc = Nokogiri::HTML(html)
         doc.css('div.grid_element').each do |business|    
@@ -65,17 +66,40 @@ class Scraper
     end
 
     def self.business_listings
-        Business.all.each_with_index do |i,biz|
-            puts"#{i}:"
-            puts "Name: #{biz.name}"
-            puts "Type of Business: #{biz.type}"
-            puts "Phone Number: #{biz.number}"
+        Business.all.each.with_index(1) do |biz,i|
+           
+            puts "#{i}.#{biz.name}"
+            # puts "Type of Business: #{biz.type}"
+            # puts "Phone Number: #{biz.number}"
         end
         
     end
+
+    def self.find_by_index
+        input = gets.to_i
+        if (1..Business.all.length).include?(input)
+            Business.each_with_index do |item,i| 
+            puts "#{item.name}"
+            puts "#{item.type}"
+            puts "#{item.number}"
+           
+            end
+        else
+            puts"Item does not exist"    
+        end
+        [input - 1]
+        
+           
+             
+         
+    end
+
+
      
 
 end
+
+
 
 
 

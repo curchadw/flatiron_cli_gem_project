@@ -5,7 +5,7 @@ class Business
     @@all = Array.new
     
 
-    attr_accessor :name, :type, :number
+    attr_accessor :name, :type, :number, :address
     
 
     def initialize(attributes = nil)

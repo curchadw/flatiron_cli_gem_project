@@ -35,12 +35,9 @@ class MinorityBiz::CLI
                 when "1"
                     puts 'Type "back" to go back to main menu'
                     puts '------------------------------------'
+                    puts 'Pick a business to get information on'
                     
-                    if Business.all == []
-                        puts 'No data to show at the moment, type "back" to go back to main menu'
-                    else
-                        show_listings
-                    end
+                    show_listings
                     
                 when "2"
                     puts 'Have yourself a good day!'
@@ -57,12 +54,19 @@ class MinorityBiz::CLI
     end
 
     def make_listings
+        Scraper.scrape_first_page
+        Scraper.scrape_second_page
+        Scraper.scrape_third_page
+        Scraper.scrape_fourth_page
+        
         business_array = Scraper.business_listings
-        Business.create_from_collection(business_array)
+        # Business.create_from_collection(business_array)
     end
 
     def show_listings
+        # Scraper.find_by_index
         make_listings
+        
     end
 
     def end_message
