@@ -65,22 +65,7 @@ class Scraper
         end  
     end
 
-    def self.business_listings
-        Business.all.each.with_index(1) do |biz,i|
-           
-            puts "#{i}.#{biz.name}"
-            
-        end
-        
-    end
-
-    def self.find_by_index
-        input = gets.to_i
-        biz = Business.all[input-1]
-        puts "Name: #{biz.name}"
-        puts "Type: #{biz.type}"
-        puts "Phone Number: #{biz.number}"
-    end
+    
 
 
      
