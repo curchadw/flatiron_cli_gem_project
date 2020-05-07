@@ -69,8 +69,7 @@ class Scraper
         Business.all.each.with_index(1) do |biz,i|
            
             puts "#{i}.#{biz.name}"
-            # puts "Type of Business: #{biz.type}"
-            # puts "Phone Number: #{biz.number}"
+            
         end
         
     end

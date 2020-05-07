@@ -36,9 +36,10 @@ class MinorityBiz::CLI
                     puts 'Type "back" to go back to main menu'
                     puts '------------------------------------'
                     puts 'Pick a business to get information on'
-                    
                     show_listings
                     
+                    puts 'Type "back" to go back to main menu'
+                    puts '------------------------------------'
                 when "2"
                     puts 'Have yourself a good day!'
                 when 'back'
@@ -60,12 +61,14 @@ class MinorityBiz::CLI
         Scraper.scrape_fourth_page
         
         business_array = Scraper.business_listings
+        
         # Business.create_from_collection(business_array)
     end
 
     def show_listings
         make_listings
         Scraper.find_by_index
+        
     end
 
     def end_message
