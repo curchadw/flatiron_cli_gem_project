@@ -5,9 +5,10 @@ require 'pry'
 
 class MinorityBiz::CLI
     def call
-        puts "Hello and welcome to the SA Black Minority Business Directory!" 
+        puts "Hello and welcome to the SA Minority Business Directory!" 
         
         initial_options
+        make_listings
         options
         
         
@@ -17,7 +18,7 @@ class MinorityBiz::CLI
     def initial_options
         
       puts  <<-DOC.gsub /^\s+/, ""
-            Would you like a listing of current black owned businesses in San Antonio?
+            Would you like a listing of current minority owned businesses in San Antonio?
 
             1. Listings
             2. Exit
@@ -36,17 +37,18 @@ class MinorityBiz::CLI
                     puts 'Type "back" to go back to main menu'
                     puts '------------------------------------'
                     puts 'Pick a business to get information on'
+                    puts "Pending list...."
+                    sleep(1)
+
                     show_listings
                     find_by_index
-                    if show_listings == false
-                        puts 'waiting'
-                    end
+                    
                    
                 when "2"
                     puts 'Have yourself a good day!'
                 when 'back'
                     initial_options
-                    clear_all
+                    
                 else 
                 puts "Invalid entry, please try again"
                 sleep(2)
@@ -68,7 +70,7 @@ class MinorityBiz::CLI
     end
 
     def business_listings
-        make_listings
+        
         Business.all.each.with_index(1) do |biz,i|
            
             puts "#{i}.#{biz.name}"
@@ -91,10 +93,7 @@ class MinorityBiz::CLI
         
     end
 
-    def clear_all
-        Business.all.clear()
-    end
-
+    
     def end_message
         puts 'Have yourself a good day!'  
     end
