@@ -62,8 +62,11 @@ class Scraper
             biz.type = business.css('span.hidden-xs').text
             biz.number = business.css('span.sm-block.lmargin.sm-nomargin').text.gsub("\r\n","").strip
             
-        end  
+        end
+          
     end
+
+    
 
     
 

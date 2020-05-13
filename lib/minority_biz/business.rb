@@ -5,7 +5,7 @@ class Business
     @@all = Array.new
     
 
-    attr_accessor :name, :type, :number, :address
+    attr_accessor :name, :type, :number
     
 
     def initialize(attributes = nil)
@@ -27,6 +27,14 @@ class Business
           self.send(("#{key}="), value)
         end
         self
+    end
+
+    def self.find_by_num(num)
+        @@all.detect do |business_instance|
+            num == business_instance.number
+        end    
+        
+        
     end
 
     
