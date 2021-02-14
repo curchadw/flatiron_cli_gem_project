@@ -70,10 +70,14 @@ class MinorityBiz::CLI
     end
 
     def make_listings
-        Scraper.scrape_first_page
-        Scraper.scrape_second_page
-        Scraper.scrape_third_page
-        Scraper.scrape_fourth_page
+        # Scraper.scrape_first_page
+        # Scraper.scrape_second_page
+        # Scraper.scrape_third_page
+        # Scraper.scrape_fourth_page
+        Scraper.scrape("https://www.texasblackpages.com/united-states/san-antonio")
+        Scraper.scrape("https://www.texasblackpages.com/united-states/san-antonio?page=2")
+        Scraper.scrape("https://www.texasblackpages.com/united-states/san-antonio?page=3")
+        Scraper.scrape("https://www.texasblackpages.com/united-states/san-antonio?page=4")
     end
 
     def business_listings
@@ -91,10 +95,7 @@ class MinorityBiz::CLI
        user_input = gets.to_i
         biz = Business.all[user_input-1]
               if user_input > 0 && user_input <= Business.all.length()
-                puts "Name: #{biz.name}"
-                puts "Type: #{biz.type}"
-                puts "Phone Number: #{biz.number}"
-                puts "Type 'back' to main menu" 
+                puts "Name: #{biz.name}\nType: #{biz.type}\nPhone Number: #{biz.number}\nType 'back' to main menu"
                 
                else
                 puts "Invalid input"
